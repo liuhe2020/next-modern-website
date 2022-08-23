@@ -1,3 +1,8 @@
+/* Layer directives of tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
