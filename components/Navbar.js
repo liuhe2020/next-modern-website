@@ -8,8 +8,15 @@ export default function Navbar() {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className='flex py-6 justify-between items-center navbar'>
-      <Image src={logo} alt='modern-website' width={45} height={35} />
+    <nav className='flex justify-between items-center navbar'>
+      <div className='relative w-10 h-10'>
+        <Image
+          src={logo}
+          alt='modern-website'
+          layout='fill'
+          objectFit='contain'
+        />
+      </div>
 
       <ul className='list-none sm:flex hidden justify-end items-center flex-1'>
         {navLinks.map((nav, index) => (
@@ -26,27 +33,28 @@ export default function Navbar() {
       </ul>
 
       <div className='sm:hidden flex flex-1 justify-end items-center'>
-        <Image
-          src={toggle ? close : menu}
-          alt='menu'
-          width={28}
-          height={28}
-          objectFit='contain'
-          onClick={() => setToggle(!toggle)}
-        />
+        <div className='w-10 h-10 relative z-10'>
+          <Image
+            src={toggle ? close : menu}
+            alt='menu'
+            layout='fill'
+            objectFit='contain'
+            onClick={() => setToggle(!toggle)}
+          />
+        </div>
 
         <div
           className={`${
             !toggle ? 'hidden' : 'flex'
-          } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+          } fixed top-0 left-0 w-screen h-screen bg-white`}
         >
-          <ul className='list-none flex justify-end items-start flex-1 flex-col'>
+          <ul className='list-none flex justify-center items-center flex-1 flex-col'>
             {navLinks.map((nav, index) => (
               <li
                 key={nav.id}
-                className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                className={`font-poppins font-medium cursor-pointer text-3xl ${
                   active === nav.title ? 'text-secondary' : 'text-primary'
-                } ${index === navLinks.length - 1 ? 'mb-0' : 'mb-4'}`}
+                } ${index === navLinks.length - 1 ? 'mb-0' : 'mb-10'}`}
                 onClick={() => setActive(nav.title)}
               >
                 <a href={`#${nav.id}`}>{nav.title}</a>

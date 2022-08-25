@@ -3,7 +3,7 @@ import { Navbar, Hero } from '../components';
 
 export default function Home() {
   return (
-    <div className='w-full overflow-hidden'>
+    <div className={`${styles.boxWidth} overflow-hidden px-5 py-6`}>
       <div className={`${styles.paddingX} ${styles.flexCenter}`}>
         <div className={`${styles.boxWidth}`}>
           <Navbar />
